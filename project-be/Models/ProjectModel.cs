@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.Metrics;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using project_be;
 
 namespace project_be.Models
@@ -30,12 +30,25 @@ namespace project_be.Models
 
             routes.MapPost("/api/Project", async (ProjectModel projectModel, ProjectDbContext db) =>
                 {
-                    //Check that country exists
+                    //Check country is valid
+                    var client = new HttpClient();
+                    var response = await client.GetAsync("https://countriesnow.space/api/v0.1/countries/states");
+                    
+                    ExternalApiResponse<ExternalApiCountry> externalApiResponse = JsonConvert.DeserializeObject<ExternalApiResponse<ExternalApiCountry>>(await response.Content.ReadAsStringAsync());
 
-                    var country = await db.Countries.FirstOrDefaultAsync(c => c.Id == projectModel.CountryId);
+                    var country = externalApiResponse.Data.FirstOrDefault(c => c.iso2 == projectModel.CountryId);
                     if (country == null)
                     {
                         return Results.BadRequest("Invalid country");
+                    }
+
+                    //Check if country already exists in db
+                    var countryExists = (await db.Countries.FirstOrDefaultAsync(c => c.Id == projectModel.CountryId)) != null;
+
+                    if (!countryExists)
+                    {
+                        db.Countries.Add(new AddressModel()
+                            { CountryName = country.Name, Id = projectModel.CountryId });
                     }
 
                     db.Projects.Add(projectModel);
