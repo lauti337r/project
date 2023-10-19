@@ -7,7 +7,7 @@ namespace project_be.Models
     [Table("Address")]
     public class AddressModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string CountryName { get; set; }
     }
     public static class CountryEndpoints

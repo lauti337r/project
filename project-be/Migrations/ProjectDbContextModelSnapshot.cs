@@ -23,11 +23,8 @@ namespace project_be.Migrations
 
             modelBuilder.Entity("project_be.Models.AddressModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<string>("CountryName")
                         .IsRequired()
@@ -40,32 +37,32 @@ namespace project_be.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "AR",
                             CountryName = "Argentina"
                         },
                         new
                         {
-                            Id = 2,
-                            CountryName = "Denmark"
+                            Id = "MX",
+                            CountryName = "Mexico"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "BR",
                             CountryName = "Brazil"
                         },
                         new
                         {
-                            Id = 4,
-                            CountryName = "England"
+                            Id = "AU",
+                            CountryName = "Australia"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = "HR",
                             CountryName = "Croatia"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = "FR",
                             CountryName = "France"
                         });
                 });
@@ -78,8 +75,9 @@ namespace project_be.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("integer");
+                    b.Property<string>("CountryId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("ProjectName")
                         .IsRequired()
@@ -95,97 +93,97 @@ namespace project_be.Migrations
                         new
                         {
                             Id = 1,
-                            CountryId = 1,
+                            CountryId = "AR",
                             ProjectName = "Project 1"
                         },
                         new
                         {
                             Id = 2,
-                            CountryId = 2,
+                            CountryId = "MX",
                             ProjectName = "Project 2"
                         },
                         new
                         {
                             Id = 3,
-                            CountryId = 1,
+                            CountryId = "BR",
                             ProjectName = "Project 3"
                         },
                         new
                         {
                             Id = 4,
-                            CountryId = 1,
+                            CountryId = "AU",
                             ProjectName = "Project 4"
                         },
                         new
                         {
                             Id = 5,
-                            CountryId = 2,
+                            CountryId = "HR",
                             ProjectName = "Project 5"
                         },
                         new
                         {
                             Id = 6,
-                            CountryId = 6,
+                            CountryId = "FR",
                             ProjectName = "Project 6"
                         },
                         new
                         {
                             Id = 16,
-                            CountryId = 4,
+                            CountryId = "AR",
                             ProjectName = "Project 7"
                         },
                         new
                         {
                             Id = 7,
-                            CountryId = 4,
+                            CountryId = "MX",
                             ProjectName = "Project 8"
                         },
                         new
                         {
                             Id = 8,
-                            CountryId = 2,
+                            CountryId = "BR",
                             ProjectName = "Project 9"
                         },
                         new
                         {
                             Id = 9,
-                            CountryId = 5,
+                            CountryId = "AU",
                             ProjectName = "Project 10"
                         },
                         new
                         {
                             Id = 10,
-                            CountryId = 3,
+                            CountryId = "HR",
                             ProjectName = "Project 11"
                         },
                         new
                         {
                             Id = 11,
-                            CountryId = 4,
+                            CountryId = "FR",
                             ProjectName = "Project 12"
                         },
                         new
                         {
                             Id = 12,
-                            CountryId = 5,
+                            CountryId = "AR",
                             ProjectName = "Project 13"
                         },
                         new
                         {
                             Id = 13,
-                            CountryId = 5,
+                            CountryId = "MX",
                             ProjectName = "Project 14"
                         },
                         new
                         {
                             Id = 14,
-                            CountryId = 3,
+                            CountryId = "BR",
                             ProjectName = "Project 15"
                         },
                         new
                         {
                             Id = 15,
-                            CountryId = 6,
+                            CountryId = "AU",
                             ProjectName = "Project 16"
                         });
                 });

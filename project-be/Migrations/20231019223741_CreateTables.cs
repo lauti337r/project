@@ -17,8 +17,7 @@ namespace project_be.Migrations
                 name: "Address",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<string>(type: "text", nullable: false),
                     CountryName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -33,7 +32,7 @@ namespace project_be.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ProjectName = table.Column<string>(type: "text", nullable: false),
-                    CountryId = table.Column<int>(type: "integer", nullable: false)
+                    CountryId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,12 +50,12 @@ namespace project_be.Migrations
                 columns: new[] { "Id", "CountryName" },
                 values: new object[,]
                 {
-                    { 1, "Argentina" },
-                    { 2, "Denmark" },
-                    { 3, "Brazil" },
-                    { 4, "England" },
-                    { 5, "Croatia" },
-                    { 6, "France" }
+                    { "AR", "Argentina" },
+                    { "AU", "Australia" },
+                    { "BR", "Brazil" },
+                    { "FR", "France" },
+                    { "HR", "Croatia" },
+                    { "MX", "Mexico" }
                 });
 
             migrationBuilder.InsertData(
@@ -64,22 +63,22 @@ namespace project_be.Migrations
                 columns: new[] { "Id", "CountryId", "ProjectName" },
                 values: new object[,]
                 {
-                    { 1, 1, "Project 1" },
-                    { 2, 2, "Project 2" },
-                    { 3, 1, "Project 3" },
-                    { 4, 1, "Project 4" },
-                    { 5, 2, "Project 5" },
-                    { 6, 6, "Project 6" },
-                    { 7, 4, "Project 8" },
-                    { 8, 2, "Project 9" },
-                    { 9, 5, "Project 10" },
-                    { 10, 3, "Project 11" },
-                    { 11, 4, "Project 12" },
-                    { 12, 5, "Project 13" },
-                    { 13, 5, "Project 14" },
-                    { 14, 3, "Project 15" },
-                    { 15, 6, "Project 16" },
-                    { 16, 4, "Project 7" }
+                    { 1, "AR", "Project 1" },
+                    { 2, "MX", "Project 2" },
+                    { 3, "BR", "Project 3" },
+                    { 4, "AU", "Project 4" },
+                    { 5, "HR", "Project 5" },
+                    { 6, "FR", "Project 6" },
+                    { 7, "MX", "Project 8" },
+                    { 8, "BR", "Project 9" },
+                    { 9, "AU", "Project 10" },
+                    { 10, "HR", "Project 11" },
+                    { 11, "FR", "Project 12" },
+                    { 12, "AR", "Project 13" },
+                    { 13, "MX", "Project 14" },
+                    { 14, "BR", "Project 15" },
+                    { 15, "AU", "Project 16" },
+                    { 16, "AR", "Project 7" }
                 });
 
             migrationBuilder.CreateIndex(
