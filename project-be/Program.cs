@@ -1,5 +1,6 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using project_be.Models;
 
 namespace project_be
 {
@@ -31,6 +32,8 @@ namespace project_be
 
 
             app.MapControllers();
+
+            app.MapProjectEndpoints();
 
             app.Run();
         }
