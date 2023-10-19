@@ -7,7 +7,7 @@ Backend:
 
 2. Install the EF Core CLI tool globally:  dotnet tool install --global dotnet-ef
 
-3. Check the connection string in appsettings.json file in project-be.
+3. Check the postgreSQL database connection string in appsettings.json file in project-be.
 
 4. Run the following command to migrate the changes to the db: dotnet ef database update
 
