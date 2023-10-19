@@ -1,0 +1,10 @@
+<div class="add-form column-container gap-24">
+  <select  [formControl]="getFormControl('countryId')">
+    <option *ngFor="let country of countries" [value]="country.id"> {{country.countryName}}</option>
+  </select>
+
+  <input [formControl]="getFormControl('projectName')" />
+
+  <button [disabled]="form.invalid" (click)="onCreateProjectClick()"> Create Project </button>
+
+</div>

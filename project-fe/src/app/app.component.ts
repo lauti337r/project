@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Project} from "./models/project.model";
 import {ApiService} from "./api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,4 @@ import {ApiService} from "./api.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'project-fe';
-  projects: Project[] = [];
-
-  constructor(private apiService: ApiService) {
-    this.apiService.getAllProjects().subscribe({
-      next: (projects) => { this.projects = projects; },
-      error: (error: any) => { console.log(error); },
-      complete: () => { console.log('complete');
-      }
-    });
-  }
 }
