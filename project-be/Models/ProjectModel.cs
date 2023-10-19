@@ -1,7 +1,9 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Metrics;
 
 namespace project_be.Models
 {
+    [Table("Project")]
     public class ProjectModel
     {
         public int Id { get; set; }
