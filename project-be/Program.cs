@@ -32,7 +32,6 @@ namespace project_be
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
@@ -42,6 +41,8 @@ namespace project_be
             app.MapControllers();
 
             app.MapProjectEndpoints();
+
+            app.MapCountryEndpoints();
 
             app.Run();
 
