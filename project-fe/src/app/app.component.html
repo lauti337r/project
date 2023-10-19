@@ -6,7 +6,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let project in projects">
+  <tr *ngFor="let project of projects">
     <td> {{project.projectName}} </td>
     <td> {{project.country.countryName}} </td>
   </tr>

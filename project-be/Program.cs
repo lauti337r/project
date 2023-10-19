@@ -17,6 +17,13 @@ namespace project_be
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<ProjectDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Project")));
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,12 +37,14 @@ namespace project_be
 
             app.UseAuthorization();
 
+            app.UseCors("CorsPolicy");
 
             app.MapControllers();
 
             app.MapProjectEndpoints();
 
             app.Run();
+
         }
     }
 }
