@@ -16,14 +16,18 @@ export class AddProjectComponent {
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
     this.apiService.getAllCountries().subscribe({
-      next: (countries) => { this.countries = countries; },
+      next: (countries) => { this.countries = countries.data; },
       error: (error: any) => { console.log(error); },
       complete: () => { console.log('complete'); }
     });
   }
 
   onCreateProjectClick() {
-
+    this.apiService.createProject(this.form.value.countryId, this.form.value.projectName).subscribe({
+      next: (project) => { console.log(project); },
+      error: (error: any) => { console.log(error); },
+      complete: () => { console.log('complete'); }
+    });
   }
 
   getFormControl(controlName: string) {
